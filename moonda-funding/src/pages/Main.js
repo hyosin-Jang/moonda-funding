@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import ClassBoard from "../components/ClassBoard";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Thumbnail from "../components/Thumbnail";
 import styled from "styled-components";
+import ClassRequestBtn from "../components/ClassRequestBtn";
 import "../style/style.css";
 
 const Wrapper = styled.div`
@@ -21,8 +23,9 @@ const Main = ({ location, history }) => {
       <Wrapper>
         {/* 왜 스타일 적용 안되는지 모르겠음. */}
         <Header style={style} />
+        <Thumbnail />
         <ClassBoard />
-
+        <ClassRequestBtn />
         <Footer />
       </Wrapper>
     </div>
