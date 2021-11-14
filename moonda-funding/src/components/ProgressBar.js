@@ -4,15 +4,30 @@ import exImage from "../1.jpg";
 
 const Wrapper = styled.div`
   display: flex;
-  justify-content: center;
-  background-color: red;
+  flex-direction: column;
   width: 100%;
-  height: 20px;
-  border-radius: 10px;
+  margin-bottom: 5px;
 `;
 
-const ProgressBar = () => {
-  return <Wrapper>달성율</Wrapper>;
+const AchieveRate = styled.div`
+  font-size: 10px;
+  color: red;
+  font-weight: bold;
+  padding-bottom: 5px;
+`;
+const Bar = styled.div`
+  border: 1px solid red;
+  border-radius: 3px;
+  background-color: red;
+`;
+
+const ProgressBar = ({ cheerCount, goalCount }) => {
+  return (
+    <Wrapper>
+      <AchieveRate>달성율 {(cheerCount / goalCount) * 100}%</AchieveRate>
+      <Bar />
+    </Wrapper>
+  );
 };
 
 export default ProgressBar;
