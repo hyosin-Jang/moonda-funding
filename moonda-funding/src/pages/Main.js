@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ClassBoard from "../components/ClassBoard";
+import ClassContainer from "../containers/ClassContainer";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Thumbnail from "../components/Thumbnail";
@@ -24,7 +24,7 @@ const Main = ({ location, history }) => {
         {/* 왜 스타일 적용 안되는지 모르겠음. */}
         <Header style={style} />
         <Thumbnail />
-        <ClassBoard />
+        <ClassContainer />
         <ClassRequestBtn />
         <Footer />
       </Wrapper>
