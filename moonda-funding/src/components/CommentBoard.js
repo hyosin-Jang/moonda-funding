@@ -30,10 +30,10 @@ const ex = [
   }
 ];
 
-const CommentBoard = () => {
+const CommentBoard = ({ comments }) => {
   return (
     <Wrapper>
-      {ex.map((comments, index) => (
+      {comments.map((comments, index) => (
         <div key={index}>
           <Name>{comments.nickname}</Name> :
           <Comment>{comments.comment}</Comment>

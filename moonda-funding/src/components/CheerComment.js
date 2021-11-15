@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import CommentBoard from "./CommentBoard";
+import CommentContainer from "../containers/CommentContainer";
 const Wrapper = styled.div`
   display: flex;
   padding: 13px;
@@ -16,15 +16,12 @@ const Red = styled.div`
   font-weight: bold;
 `;
 
-// 컨테이너에서 API 호출하기
-// 디테일 페이지의 클래스 소개 컴포넌트
-
 const CheerComment = () => {
   return (
     <Wrapper>
       <Red>기대 한마디</Red>
       <br />
-      <CommentBoard />
+      <CommentContainer />
     </Wrapper>
   );
 };
