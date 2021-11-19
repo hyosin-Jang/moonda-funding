@@ -6,11 +6,13 @@ const session = require('express-session');
 require('dotenv').config();
 const path = require('path');
 const nunjucks = require('nunjucks');
-const {sequelize} = require('./models');
 
+
+const {sequelize} = require('./models');
 const indexRouter = require('./routes');
 const classRouter = require('./routes/class');
 const commentRouter = require('./routes/comment');
+const thumbnailRouter= require('./routes/thumbnail');
 
 const app = express();
 app.set('port', process.env.PORT);
@@ -51,6 +53,7 @@ app.use(session({
 
 app.use('/', indexRouter);
 app.use('/class', classRouter);
+app.use('/thumbnail', thumbnailRouter);
 app.use('/comment', commentRouter);
 
 // next를 호출하지 않는 미들웨어는 res.send로 응답을 보내야 함
