@@ -12,8 +12,8 @@ import "../style/style.css";
 const Detail = () => {
   const state = useLocation();
   console.log(state.state.classInfo);
-  const [name, desc] = state.state.classInfo;
-  console.log(name, desc);
+  const [key, name, desc] = state.state.classInfo;
+  console.log(key, name, desc);
 
   const [isAlarmModalOn, setisAlarmModalOn] = useState(false);
 
@@ -27,13 +27,15 @@ const Detail = () => {
         <Header />
         <Thumbnail />
         <ClassDesc name={name} desc={desc} />
-        <CheerComment />
+        <CheerComment id={key} />
         <ProgressBar />
         <Message>현재 27명이 함께 응원중이에요!</Message>
         <AlarmButton onClick={handleAlarmModal}>
           응원하고 알림받기🔔
         </AlarmButton>
-        {isAlarmModalOn && <AlarmModal handleAlarmModal={handleAlarmModal} />}
+        {isAlarmModalOn && (
+          <AlarmModal id={key} handleAlarmModal={handleAlarmModal} />
+        )}
       </Wrapper>
     </div>
   );
