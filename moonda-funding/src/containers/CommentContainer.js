@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 import CommentBoard from "../components/CommentBoard";
 import axios from "axios";
 
-// 몇번째 class 인지 id 값 필요함!
-
 const CommentContainer = ({ id }) => {
-  // 한번만 실행
   const [comments, setComments] = useState([]);
   useEffect(() => {
     getCommentAPI();
   }, []);
-  // 주소 변경하기
 
   const getCommentAPI = () => {
     axios
@@ -22,7 +19,26 @@ const CommentContainer = ({ id }) => {
       .catch(err => console.log(err));
   };
 
-  return <CommentBoard comments={comments} />;
+  return (
+    <Wrapper>
+      <Red>기대 한마디</Red>
+      <br />
+      <CommentBoard comments={comments} />
+    </Wrapper>
+  );
 };
 
 export default CommentContainer;
+
+const Wrapper = styled.div`
+  display: flex;
+  padding: 13px;
+  margin: 7px;
+  width: 100%;
+  flex-direction: column;
+`;
+
+const Red = styled.div`
+  color: red;
+  font-weight: bold;
+`;
