@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import CommentBoard from "../components/CommentBoard";
 import axios from "axios";
-// GET /class API 호출하는 container component
 
-const CommentContainer = () => {
+// 몇번째 class 인지 id 값 필요함!
+
+const CommentContainer = ({ id }) => {
   // 한번만 실행
   const [comments, setComments] = useState([]);
   useEffect(() => {
@@ -13,7 +14,7 @@ const CommentContainer = () => {
 
   const getCommentAPI = () => {
     axios
-      .get("http://localhost:5000/comment")
+      .get(`http://localhost:5000/comment/${id}`)
       .then(res => {
         console.log(res.data);
         setComments(res.data);

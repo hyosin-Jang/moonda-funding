@@ -3,8 +3,8 @@ import styled from "styled-components";
 import ProgressBar from "./ProgressBar";
 import { useNavigate } from "react-router-dom";
 
-function StyledCard({ name, desc, cheerCount, goalCount }) {
-  const [classInfo, setClassInfo] = useState([name, desc]);
+function StyledCard({ id, name, desc, cheerCount, goalCount }) {
+  const [classInfo, setClassInfo] = useState([id, name, desc]);
   const [count, setCount] = useState(cheerCount);
   const navigate = useNavigate();
 
