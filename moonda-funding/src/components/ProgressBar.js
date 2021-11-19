@@ -11,42 +11,28 @@ const Wrapper = styled.div`
 `;
 
 const AchieveRate = styled.div`
-  font-size: 10px;
   color: red;
   font-weight: bold;
   padding-bottom: 5px;
 `;
-const Bar = styled.div`
-  border: 1px solid red;
-  border-radius: 3px;
-  background-color: red;
-`;
-
-const move = () => {
-  let i = 0;
-  if (i == 0) {
-    i = 1;
-    const elem = document.getElementById("Bar");
-    let width = 1;
-    const frame = () => {
-      if (width >= 100) {
-        clearInterval(id);
-        i = 0;
-      } else {
-        width++;
-        elem.style.width = width + "%";
-      }
-    };
-    let id = setInterval(frame, 10);
-  }
-};
 
 const ProgressBar = ({ cheerCount, goalCount }) => {
+  let achieveRate = Math.floor((cheerCount / goalCount) * 100);
+
+  if (achieveRate >= 100) {
+    achieveRate = 100;
+  }
+  const style = {
+    width: `${achieveRate}%`,
+    height: "5px",
+    backgroundColor: "red"
+  };
+
   return (
     <Wrapper>
-      <AchieveRate>달성율 {(cheerCount / goalCount) * 100}%</AchieveRate>
+      <AchieveRate>달성율 {achieveRate}%</AchieveRate>
       <div id="Progress">
-        <div id="Bar" onClick={move}></div>
+        <div id="Bar" style={style}></div>
       </div>
     </Wrapper>
   );
