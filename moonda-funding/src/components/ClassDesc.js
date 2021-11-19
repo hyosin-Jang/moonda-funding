@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
+import "../style/style.css";
 
 const Wrapper = styled.div`
   display: flex;
@@ -15,14 +16,43 @@ const Bold = styled.div`
   font-weight: bold;
 `;
 
-const ClassDesc = ({ name, desc }) => {
+const Name = styled.div`
+  font-weight: bold;
+  font-size: 18px;
+  padding: 5px;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  gap: 5px;
+`;
+
+const Subtitle = styled.div`
+  color: grey;
+  font-size: 13px;
+`;
+
+const ClassDesc = ({ name, desc, subtitle, goalCount }) => {
   return (
-    <Wrapper>
-      <Bold>클래스 소개</Bold>
-      <br />
-      {name}
-      {desc}
-    </Wrapper>
+    <>
+      <Container>
+        <Name>{name}</Name>
+        <Subtitle>{subtitle}</Subtitle>
+        <Subtitle>{">>"} 파트별 모집 가능</Subtitle>
+        <div className="goal-desc">
+          {" "}
+          목표 응원 <span className="red">{goalCount}명</span> 달성 시 클래스
+          개설!
+        </div>
+      </Container>
+      <Wrapper>
+        <Bold>클래스 소개</Bold>
+        <br />
+        <div className="class-desc">{desc}</div>
+      </Wrapper>
+    </>
   );
 };
 
