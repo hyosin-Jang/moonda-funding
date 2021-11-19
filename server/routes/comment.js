@@ -1,37 +1,41 @@
 const express = require('express');
+const { Class, Comment } = require('../models');
 
 const router = express.Router();
 
 // GET 라우터
-router.get('/', (req,res)=>{
-    res.json(comment);
-});
+router.route('/:id')
+.post(async (req, res, next)=>{
+  try{
+    console.log(req.body.comment, req.body.phoneNum, req.body.nickname);
+    const newComment = await Comment.create({
+      nickname: req.body.nickname,
+      comment: req.body.comment,
+      phoneNum: req.body.phoneNum,
+      class_id: req.params.id
+    });
+    console.log(newComment);
+    res.status(201).json(newComment);
+  } catch(err){
+    console.error(err);
+    next(err);
+  }
+})
 
-const comment = [
-    {
-      id: 0,
-      nickname: "솜사탕이 먹고 싶은 모네",
-      comment: "헐 제 인생 뮤지컬 넘버를 이렇게 배울 수 있다니...!!"
-    },
-    {
-      id: 1,
-      nickname: "핸드폰 충전 중인 반 고흐",
-      comment:
-        "항상 뮤지컬에 대해 어렵다 생각하고 도전도 안해봤는데.. 좋은 기회가 될 것 같아요"
-    },
-    {
-        id: 3,
-        nickname: "핸드폰 충전 중인 반 고흐",
-        comment:
-          "항상 뮤지컬에 대해 어렵다 생각하고 도전도 안해봤는데.. 좋은 기회가 될 것 같아요"
+.get( async (req, res, next) => {
+  try {
+    const comments = await Comment.findAll({
+      include: {
+        model: Class,
+        where: { id: req.params.id },
       },
-      {
-        id: 4,
-        nickname: "핸드폰 충전 중인 반 고흐",
-        comment:
-          "항상 뮤지컬에 대해 어렵다 생각하고 도전도 안해봤는데.. 좋은 기회가 될 것 같아요"
-      }
-  ];
-  
+    });
+    console.log(comments);
+    res.json(comments);
+  } catch(err) {
+    console.error(err);
+    next(err);
+  }
+});
 
 module.exports = router;
