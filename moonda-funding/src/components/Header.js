@@ -16,18 +16,19 @@ const Wrapper = styled.div`
 const Logo = styled.img`
   font-size: 20px;
   width: 100px;
+  cursor: pointer;
   height: 30px;
 `;
 
 const Button = styled.button`
   border: 1px solid black;
   border-radius: 25px;
+  cursor: pointer;
   background-color: black;
   color: white;
-  font-weight: bold;
   width: 120px;
   padding: 7px;
-  font-size: 10px;
+  font-size: 11px;
 `;
 
 const Header = ({ location, history }) => {
