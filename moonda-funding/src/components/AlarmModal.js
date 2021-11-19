@@ -1,6 +1,84 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
+
 import "../style/style.css";
+
+const AlarmModal = ({ handleAlarmModal, id }) => {
+  const [phoneNum, setPhoneNum] = useState();
+  const [comment, setComment] = useState();
+
+  const getRandomNickname = () => {
+    const randomNickname = [
+      "핸드폰 충전 중인 반 고흐",
+      "솜사탕이 먹고 싶은 모네",
+      "뮤지컬이 보고 싶은 피카소",
+      "배가 고픈 안보현",
+      "기분 좋은 정국이"
+    ];
+    const randNum = Math.floor(Math.random() * randomNickname.length);
+    return randomNickname[randNum];
+  };
+
+  const handlePhoneNum = e => {
+    setPhoneNum(e.target.value);
+  };
+
+  const handleComment = e => {
+    setComment(e.target.value);
+  };
+
+  const handlePostCommentAPI = () => {
+    // 랜덤 닉네임 생성
+    const nickname = getRandomNickname();
+    console.log("nickname", nickname);
+
+    const sendData = { nickname, phoneNum, comment };
+
+    axios
+      .post(`http://localhost:5000/comment/${id}`, sendData)
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => console.log(err));
+  };
+  return (
+    <Wrapper onClick={handleAlarmModal}>
+      <ModalContainer onClick={e => e.stopPropagation()}>
+        <Modal>
+          <div>클래스가 개설되면 문자로 알려드려요! </div>
+
+          <PhoneInput
+            id="phoneNumber"
+            required
+            placeholder="전화번호 입력('-'없이 번호만)"
+            type="text"
+            onChange={handlePhoneNum}
+          />
+
+          <div className="message">
+            입력하신 전화번호는 클래스 개설 시 알림 용도로만 사용되며, 이후에는
+            파기됩니다.
+          </div>
+          <div>기대평 한마디만 남겨주세요😊 </div>
+          <CommentInput
+            id="comment"
+            placeholder="예시)
+            와 내 인생 뮤지컬인데.. 꼬오옥 배우고 싶어요!"
+            onChange={handleComment}
+            required
+          />
+
+          <div className="button-black" onClick={handlePostCommentAPI}>
+            개설돼라, 얍!
+          </div>
+        </Modal>
+      </ModalContainer>
+    </Wrapper>
+  );
+};
+
+export default AlarmModal;
 
 const Wrapper = styled.div`
   position:fixed;
@@ -50,34 +128,3 @@ const CommentInput = styled.textarea`
   padding: 10px;
   border: 1px solid lightgrey;
 `;
-
-const AlarmModal = ({ handleAlarmModal }) => {
-  return (
-    <Wrapper onClick={handleAlarmModal}>
-      <ModalContainer onClick={e => e.stopPropagation()}>
-        <Modal>
-          <div>클래스가 개설되면 문자로 알려드려요! </div>
-          <PhoneInput
-            id="phoneNumber"
-            required
-            placeholder="전화번호 입력('-'없이 번호만)"
-            type="text"
-          />
-          <div className="message">
-            입력하신 전화번호는 클래스 개설 시 알림 용도로만 사용되며, 이후에는
-            파기됩니다.
-          </div>
-          <div>기대평 한마디만 남겨주세요😊 </div>
-          <CommentInput
-            id="comment"
-            placeholder="예시)
-            와 내 인생 뮤지컬인데.. 꼬오옥 배우고 싶어요!"
-          />
-          <div className="button-black">개설돼라, 얍!</div>
-        </Modal>
-      </ModalContainer>
-    </Wrapper>
-  );
-};
-
-export default AlarmModal;

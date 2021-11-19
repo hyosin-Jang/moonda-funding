@@ -16,12 +16,12 @@ const Red = styled.div`
   font-weight: bold;
 `;
 
-const CheerComment = () => {
+const CheerComment = ({ id }) => {
   return (
     <Wrapper>
       <Red>기대 한마디</Red>
       <br />
-      <CommentContainer />
+      <CommentContainer id={id} />
     </Wrapper>
   );
 };
