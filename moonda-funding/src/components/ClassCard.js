@@ -3,29 +3,27 @@ import styled from "styled-components";
 import ProgressBar from "./ProgressBar";
 import { useNavigate } from "react-router-dom";
 
-function StyledCard({ id, name, desc, cheerCount, goalCount }) {
-  const [classInfo, setClassInfo] = useState([id, name, desc]);
-  const [count, setCount] = useState(cheerCount);
+function StyledCard({ id, name, desc, cheerCount, goalCount, subtitle }) {
+  const [classInfo, setClassInfo] = useState([
+    id,
+    name,
+    desc,
+    cheerCount,
+    goalCount,
+    subtitle
+  ]);
   const navigate = useNavigate();
 
-  const handleCheerCount = () => {
-    setCount(cheerCount + 1);
-  };
   return (
-    <Wrapper>
+    <Wrapper onClick={() => navigate("/detail", { state: { classInfo } })}>
       <Thumbnail />
       <Name> {name}</Name>
-
-      <Desc>{desc}</Desc>
+      <Desc>{subtitle}</Desc>
       <ProgressBar cheerCount={cheerCount} goalCount={goalCount} />
-      <CheerButton onClick={handleCheerCount}>
-        <Red>{count}명</Red> 응원중👏
+      <CheerButton>
+        <Red>{cheerCount}명</Red> 응원중👏
       </CheerButton>
-      <GotoCheerButton
-        onClick={() => navigate("/detail", { state: { classInfo } })}
-      >
-        응원하기 {">"}
-      </GotoCheerButton>
+      <GotoCheerButton>응원하기 {">"}</GotoCheerButton>
     </Wrapper>
   );
 }
@@ -36,10 +34,11 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: inherit;
+  pointer: cursor;
   gap: 0.2rem;
   height: 250px;
   border-radius: 3px;
-  font-size: 2rem;
+  font-size: 2px;
   padding: 5px;
   margin: 10px;
 `;

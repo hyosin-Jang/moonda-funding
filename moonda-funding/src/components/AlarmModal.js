@@ -28,7 +28,7 @@ const AlarmModal = ({ handleAlarmModal, id }) => {
     setComment(e.target.value);
   };
 
-  const handlePostCommentAPI = () => {
+  const handlePostCommentAPI = e => {
     // 랜덤 닉네임 생성
     const nickname = getRandomNickname();
     console.log("nickname", nickname);
@@ -41,6 +41,9 @@ const AlarmModal = ({ handleAlarmModal, id }) => {
         console.log(res.data);
       })
       .catch(err => console.log(err));
+
+    // 모달 창 닫기
+    handleAlarmModal();
   };
   return (
     <Wrapper onClick={handleAlarmModal}>
@@ -68,10 +71,13 @@ const AlarmModal = ({ handleAlarmModal, id }) => {
             onChange={handleComment}
             required
           />
-
-          <div className="button-black" onClick={handlePostCommentAPI}>
-            개설돼라, 얍!
-          </div>
+          {phoneNum && comment ? (
+            <div className="button-black" onClick={handlePostCommentAPI}>
+              개설돼라, 얍!
+            </div>
+          ) : (
+            <div className="button-inactive">개설돼라, 얍!</div>
+          )}
         </Modal>
       </ModalContainer>
     </Wrapper>

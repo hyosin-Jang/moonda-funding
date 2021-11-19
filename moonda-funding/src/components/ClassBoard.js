@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import StyledCard from "./ClassCard";
 import styled from "styled-components";
 
@@ -20,6 +20,7 @@ const ClassBoard = ({ classes }) => {
           key={index}
           id={classes.id}
           name={classes.className}
+          subtitle={classes.subtitle}
           desc={classes.desc}
           cheerCount={classes.cheerCount}
           goalCount={classes.goalCount}
