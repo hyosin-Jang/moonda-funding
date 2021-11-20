@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import "../style/style.css";
-import exImage from "../1.jpg";
+import "../style/style.scss";
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
   margin-bottom: 5px;
+  padding-top: 3px;
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
 `;
 
 const AchieveRate = styled.div`

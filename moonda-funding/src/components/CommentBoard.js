@@ -5,6 +5,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  font-size: 14px;
   flex-direction: column;
   margin: 10px;
 `;
@@ -20,6 +21,14 @@ const MoreButton = styled.div`
   background-color: none;
   font-size: 15px;
   cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const CommentWrapper = styled.div`
+  padding-top: 10px;
+  line-height: 20px;
 `;
 
 const Comment = styled.span`
@@ -35,11 +44,11 @@ const CommentBoard = ({ comments }) => {
   return (
     <Wrapper>
       {comments.slice(0, visible).map((comments, index) => (
-        <div key={index}>
+        <CommentWrapper key={index}>
           <Name>{comments.nickname}</Name> :{" "}
           <Comment>{comments.comment}</Comment>
           <br /> <br />
-        </div>
+        </CommentWrapper>
       ))}
       <MoreButton onClick={showMoreItems}>더보기</MoreButton>
     </Wrapper>

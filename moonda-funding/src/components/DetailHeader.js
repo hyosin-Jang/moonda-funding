@@ -1,16 +1,22 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
-import "../style/style.css";
-import backicon from "../back-icon.jpg";
+import "../style/style.scss";
+import backicon from "../image/back-icon.jpg";
 import { useNavigate } from "react-router-dom";
 
 const Wrapper = styled.div`
   top: 0;
   display: flex;
   width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: white;
   padding: 8px;
   height: 50px;
   align-items: center;
+  border-bottom-style: solid;
+  border-bottom-color: lightgrey;
+  border-bottom-width: 1px;
   font-weight: bold;
   justify-content: space-between;
 `;

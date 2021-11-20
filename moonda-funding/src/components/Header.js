@@ -1,14 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import "../style/style.css";
-import logo from "../logo.jpg";
+import "../style/style.scss";
+import logo from "../image/logo.jpg";
+
 const Wrapper = styled.div`
-  top: 0;
   display: flex;
-  width: 100%;
   padding: 8px;
+  position: fixed;
+  top: 0;
+  width: inherit;
   height: 50px;
+  background-color: white;
   align-items: center;
   justify-content: space-between;
 `;
@@ -31,11 +34,7 @@ const Button = styled.button`
   font-size: 11px;
 `;
 
-const Header = ({ location, history }) => {
-  /* TODO: 주소 값에 따라 다른 헤더 넘기기
-  if (location.pathname === "/detail") {
-  }
-  */
+const Header = () => {
   const navigate = useNavigate();
   return (
     <Wrapper>

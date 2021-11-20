@@ -7,15 +7,13 @@ import styled from "styled-components";
 import ProgressBar from "../components/ProgressBar";
 import Thumbnail from "../components/Thumbnail";
 import AlarmModal from "../components/AlarmModal";
-import "../style/style.css";
+import "../style/style.scss";
 
 const Detail = () => {
   const state = useLocation();
-  console.log(state.state.classInfo);
 
   const [key, name, desc, cheerCount, goalCount, subtitle] =
     state.state.classInfo;
-  console.log(key, name, desc);
 
   const [isAlarmModalOn, setisAlarmModalOn] = useState(false);
 
@@ -24,28 +22,32 @@ const Detail = () => {
   };
 
   return (
-    <div className="commentBoard">
-      <Wrapper>
-        <DetailHeader name={name} />
-        <Thumbnail />
-        <ClassDesc
-          name={name}
-          desc={desc}
-          subtitle={subtitle}
-          goalCount={goalCount}
-        />
-        <CommentContainer id={key} />
-        <ProgressBar cheerCount={cheerCount} goalCount={goalCount} />
-        <Message>
-          현재 {"  "} <b>{cheerCount}</b>명이 함께 응원중이에요!
-        </Message>
-        <AlarmButton onClick={handleAlarmModal}>
-          응원하고 알림받기🔔
-        </AlarmButton>
-        {isAlarmModalOn && (
-          <AlarmModal id={key} handleAlarmModal={handleAlarmModal} />
-        )}
-      </Wrapper>
+    <div className="main-wrapper">
+      <div className="main-container">
+        <Wrapper>
+          <DetailHeader name={name} />
+          <Thumbnail />
+          <ClassDesc
+            name={name}
+            desc={desc}
+            subtitle={subtitle}
+            goalCount={goalCount}
+          />
+          <CommentContainer id={key} />
+          <ButtonWrapper>
+            <ProgressBar cheerCount={cheerCount} goalCount={goalCount} />
+            <Message>
+              현재&nbsp; <b>{cheerCount}</b>명이 함께 응원중이에요!
+            </Message>
+            <AlarmButton onClick={handleAlarmModal}>
+              응원하고 알림받기🔔
+            </AlarmButton>
+            {isAlarmModalOn && (
+              <AlarmModal id={key} handleAlarmModal={handleAlarmModal} />
+            )}
+          </ButtonWrapper>
+        </Wrapper>
+      </div>
     </div>
   );
 };
@@ -55,15 +57,22 @@ export default Detail;
 const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  padding-left: 10px;
-  padding-right: 10px;
   gap: 10px;
+  width: 100%;
   padding-bottom: 30px;
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
+  gap: 10px;
+  width: 100%;
 `;
 
 const Message = styled.div`
   display: flex;
-  flex-direction: row;
+  width: 100%;
   justify-content: flex-start;
   padding-top: 10px;
   font-size: 13px;

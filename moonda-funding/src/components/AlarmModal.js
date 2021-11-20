@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 
-import "../style/style.css";
+import "../style/style.scss";
 
 const AlarmModal = ({ handleAlarmModal, id }) => {
   const [phoneNum, setPhoneNum] = useState();
@@ -29,7 +29,6 @@ const AlarmModal = ({ handleAlarmModal, id }) => {
   };
 
   const handlePostCommentAPI = e => {
-    // 랜덤 닉네임 생성
     const nickname = getRandomNickname();
     console.log("nickname", nickname);
 
@@ -42,7 +41,6 @@ const AlarmModal = ({ handleAlarmModal, id }) => {
       })
       .catch(err => console.log(err));
 
-    // 모달 창 닫기
     handleAlarmModal();
   };
   return (
@@ -114,10 +112,6 @@ const Modal = styled.div`
   gap: 10px;
   border-radius: 10px;
   padding: 40px 20px 10px 20px;
-`;
-
-const Bold = styled.div`
-  font-weight: bold;
 `;
 
 const PhoneInput = styled.input`
