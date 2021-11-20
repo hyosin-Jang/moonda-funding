@@ -1,0 +1,134 @@
+@import "_variables";
+@import "_mixins";
+@import "reset";
+
+* {
+  font-family: "Noto Sans KR", sans-serif !important;
+}
+
+.classBoard .header {
+  position: fixed;
+  background-color: white;
+  top: 0;
+}
+.main-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.main-container {
+  display: flex;
+  flex-direction: column;
+
+  margin: 0;
+  padding: 0;
+  @media screen and (max-width: 600px) {
+    display: flex;
+  }
+  @media screen and (max-width: 1300px) {
+    width: 600px;
+  }
+}
+
+.wrapper-inside {
+  color: $grey;
+  font-size: $small;
+  padding: 2px;
+}
+.wrapper-main {
+  font-weight: bolder;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  font-size: 20px;
+}
+
+.red {
+  color: red;
+}
+.goal-desc {
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: bold;
+}
+.class-desc {
+  font-size: 14px;
+  color: grey;
+  line-height: 20px;
+}
+.button-black {
+  border: 1px solid black;
+  border-radius: 20px;
+  background-color: black;
+  color: white;
+  font-size: 2rem;
+  display: flex;
+  font-size: 13px;
+  justify-content: center;
+  width: 120px;
+  cursor: pointer;
+  padding: 10px;
+  margin: 10px;
+}
+
+.button-inactive {
+  border: 1px solid;
+  border-radius: 20px;
+  background-color: grey;
+  color: white;
+  font-size: 2rem;
+  display: flex;
+  font-size: 13px;
+  justify-content: center;
+  width: 120px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.message {
+  color: grey;
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: normal;
+  padding: 0 10px 20px 10px;
+}
+
+.header-wrapper {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  top: 0;
+}
+
+#Progress {
+  width: 100%;
+  border-radius: 30px;
+  background-color: lightgrey;
+}
+
+.cheer-button {
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5rem;
+  background-color: white;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 5px 5px 20px 0 lightgrey;
+}
+
+.open-button {
+  border-radius: 10px;
+  height: 5rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $red;
+  color: white;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 5px 5px 20px 0 lightgrey;
+}
