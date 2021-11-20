@@ -1,26 +1,14 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import Icon from "../icon.jpg";
+import Icon from "../image/icon.jpg";
+import styles from "../style/requestButton.scss";
+import classNames from "classnames/bind";
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: 95%;
   margin: 20px;
-`;
-
-const Button = styled.button`
-  display: flex;
-  background-color: white;
-  border-radius: 30px;
-  width: 100%;
-  border: none;
-  box-shadow: 5px 5px 20px lightgrey;
-  padding: 5px;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  font-weight: bold;
 `;
 
 const Message = styled.div`
@@ -33,15 +21,16 @@ const Img = styled.img`
 `;
 
 const ClassRequestBtn = () => {
+  const cx = classNames.bind(styles);
   return (
     <Wrapper>
-      <Button>
-        <div>
+      <div className={cx("request-button")}>
+        <div className={cx("request-button-inside")}>
           원하는 클래스가 없나요?
           <Message>응원 클래스 직접 요청하러 가기</Message>
         </div>
         <Img src={Icon} />
-      </Button>
+      </div>
     </Wrapper>
   );
 };
