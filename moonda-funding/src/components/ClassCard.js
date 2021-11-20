@@ -2,15 +2,27 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import ProgressBar from "./ProgressBar";
 import { useNavigate } from "react-router-dom";
+import Button from "./Button";
+import style from "../style/style.scss";
 
-function StyledCard({ id, name, desc, cheerCount, goalCount, subtitle }) {
+function StyledCard({
+  id,
+  name,
+  desc,
+  cheerCount,
+  goalCount,
+  subtitle,
+  state
+}) {
+  // rest 이용하기
   const [classInfo, setClassInfo] = useState([
     id,
     name,
     desc,
     cheerCount,
     goalCount,
-    subtitle
+    subtitle,
+    state
   ]);
   const navigate = useNavigate();
 
@@ -19,11 +31,12 @@ function StyledCard({ id, name, desc, cheerCount, goalCount, subtitle }) {
       <Thumbnail />
       <Name> {name}</Name>
       <Desc>{subtitle}</Desc>
+      <Desc>{">>"}파트별 모집 가능</Desc>
       <ProgressBar cheerCount={cheerCount} goalCount={goalCount} />
-      <CheerButton>
-        <Red>{cheerCount}명</Red> 응원중👏
-      </CheerButton>
-      <GotoCheerButton>응원하기 {">"}</GotoCheerButton>
+      <Button state={state} cheerCount={cheerCount} />
+      {state === "cheering" && (
+        <GotoCheerButton>응원하기 {">"}</GotoCheerButton>
+      )}
     </Wrapper>
   );
 }
@@ -36,9 +49,9 @@ const Wrapper = styled.div`
   width: inherit;
   pointer: cursor;
   gap: 0.2rem;
-  height: 250px;
+  height: 280px;
   border-radius: 3px;
-  font-size: 2px;
+  font-size: 3px;
   padding: 5px;
   margin: 10px;
 `;
@@ -51,28 +64,16 @@ const Thumbnail = styled.div`
 const Name = styled.div`
   height: 10%;
   font-weight: bold;
-
+  padding-top: 2px;
+  padding-bottom: 2px;
   font-size: 15px;
 `;
 
 const Desc = styled.div`
   height: 10%;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: bold;
-`;
-
-const Red = styled.span`
-  color: red;
-`;
-
-const CheerButton = styled.button`
-  border-radius: 10px;
-  height: 5rem;
-  font-weight: bold;
-  background-color: white;
-  font-size: 13px;
-  border: none;
-  box-shadow: 5px 5px 20px 0 lightgrey;
+  color: #4a4a4a;
 `;
 
 const GotoCheerButton = styled.button`
@@ -80,6 +81,6 @@ const GotoCheerButton = styled.button`
   font-weight: bold;
   border: none;
   margin-top: 5px;
-  background-color: white;
-  font-size: 10px;
+  background-color: rgba(255, 255, 255, 0);
+  font-size: 12px;
 `;
