@@ -1,0 +1,30 @@
+@import "utils";
+
+.request-button {
+  display: flex;
+  background-color: white;
+  border-radius: 30px;
+  width: inherit;
+  border: none;
+  box-shadow: 5px 5px 20px lightgrey;
+  padding: 5px;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.request-button-inside {
+  display: flex;
+  flex-direction: column;
+  line-height: 18px;
+  gap: 5px;
+}
+
+@include media("<small") {
+  width: 600px;
+}
+
+@include media("<medium") {
+  width: 800px;
+}
