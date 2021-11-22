@@ -34,6 +34,9 @@ module.exports = class Class extends Sequelize.Model {
                 allowNull: false,
                 defaultValue: 1
             },
+            thumbnail: {
+                type: Sequelize.STRING(100)
+            },
         }, {
             sequelize,
             timestamps: false,
