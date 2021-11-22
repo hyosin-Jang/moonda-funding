@@ -2,8 +2,10 @@ const express = require('express');
 const { Class, Comment } = require('../models');
 
 const router = express.Router();
+const csrf = require('csurf');
+const csrfProtection = csrf({ cookie: true });
 
-// GET 라우터
+
 router.route('/:id')
 .post(async (req, res, next)=>{
   try{
@@ -22,7 +24,7 @@ router.route('/:id')
   }
 })
 
-.get( async (req, res, next) => {
+.get(async (req, res, next) => {
   try {
     const comments = await Comment.findAll({
       include: {
