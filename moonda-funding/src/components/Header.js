@@ -4,18 +4,6 @@ import { useNavigate } from "react-router-dom";
 import "../style/style.scss";
 import logo from "../image/logo.jpg";
 
-const Wrapper = styled.div`
-  display: flex;
-  padding: 8px;
-  position: fixed;
-  top: 0;
-  width: inherit;
-  height: 50px;
-  background-color: white;
-  align-items: center;
-  justify-content: space-between;
-`;
-
 const Logo = styled.img`
   font-size: 20px;
   width: 100px;
@@ -37,10 +25,11 @@ const Button = styled.button`
 const Header = () => {
   const navigate = useNavigate();
   return (
-    <Wrapper>
-      <Logo src={logo} onClick={() => navigate("/")} />
+    <div className="header-wrapper">
+      <img className="header-logo" src={logo} onClick={() => navigate("/")} />
+      <div> </div>
       <Button>앱 출시 알림 신청</Button>
-    </Wrapper>
+    </div>
   );
 };
 
