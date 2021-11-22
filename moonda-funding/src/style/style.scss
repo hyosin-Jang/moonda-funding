@@ -18,17 +18,39 @@
 .main-container {
   display: flex;
   flex-direction: column;
-
-  margin: 0;
+  margin: 70px 0 0 0;
   padding: 0;
   @media screen and (max-width: 600px) {
-    display: flex;
+    width: 100%;
   }
-  @media screen and (max-width: 1300px) {
+  @media screen and (max-width: 1500px) {
     width: 600px;
   }
 }
 
+.header-wrapper {
+  display: flex;
+  padding: 8px;
+  position: fixed;
+  top: 0;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
+  @media screen and (min-width: 600px) and (max-width: 1500px) {
+    width: 600px;
+  }
+  height: 50px;
+  background-color: white;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-logo {
+  font-size: 20px;
+  width: 100px;
+  cursor: pointer;
+  height: 30px;
+}
 .wrapper-inside {
   color: $grey;
   font-size: $small;
@@ -39,6 +61,27 @@
   padding-top: 5px;
   padding-bottom: 10px;
   font-size: 20px;
+}
+
+.detail-header {
+  top: 0;
+  display: flex;
+  position: fixed;
+  background-color: white;
+  padding: 8px;
+  height: 50px;
+  align-items: center;
+  border-bottom-style: solid;
+  border-bottom-color: lightgrey;
+  border-bottom-width: 1px;
+  font-weight: bold;
+  justify-content: space-between;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
+  @media screen and (min-width: 600px) and (max-width: 1500px) {
+    width: 600px;
+  }
 }
 
 .red {
