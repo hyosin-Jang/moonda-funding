@@ -24,8 +24,8 @@ const Detail = () => {
   return (
     <div className="main-wrapper">
       <div className="main-container">
+        <DetailHeader name={name} />
         <Wrapper>
-          <DetailHeader name={name} />
           <Thumbnail />
           <ClassDesc
             name={name}
