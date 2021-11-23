@@ -2,9 +2,6 @@ const express = require('express');
 const { Class, Comment } = require('../models');
 
 const router = express.Router();
-const csrf = require('csurf');
-const csrfProtection = csrf({ cookie: true });
-
 
 router.route('/:id')
 .post(async (req, res, next)=>{

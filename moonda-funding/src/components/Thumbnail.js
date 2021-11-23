@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import exImage from "../1.jpg";
+import exImage from "../image/musical.jpg";
 
 const Wrapper = styled.div`
   display: flex;
