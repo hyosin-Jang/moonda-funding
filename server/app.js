@@ -6,6 +6,8 @@ const session = require('express-session');
 require('dotenv').config();
 const path = require('path');
 const nunjucks = require('nunjucks');
+const helmet = require('helmet');
+const hpp = require('hpp');
 
 
 const {sequelize} = require('./models');
@@ -13,18 +15,25 @@ const indexRouter = require('./routes');
 const classRouter = require('./routes/class');
 const commentRouter = require('./routes/comment');
 const thumbnailRouter= require('./routes/thumbnail');
+const logger = require('./logger');
 
 const app = express();
 app.set('port', process.env.PORT);
 
 app.use(cors());
 
-// dev 모드 기준으로 요청과 응답을 볼 수 있음
-app.use(morgan('dev'));
+if (process.env.NODE_ENV === 'production') {
+    app.use(morgan('combined'));
+    app.use(helmet({contentSecurityPolicy: false}));
+    app.use(hpp());
+}else{
+    app.use(morgan('dev'));   
+}
+
 app.use('/', express.static(path.join(__dirname, 'public')));
 
 sequelize.sync({force: false}).then(()=>{
-    console.log('데이터베이스 연결 성공');
+    console.log('database connect');
 })
 .catch((err)=>{
     console.error(err);
@@ -35,8 +44,6 @@ app.use(express.urlencoded({extended:false}));
 
 app.use(cookieParser(process.env.COOKIT_SECRET));
 
-// 세션 관리용 미들웨어, 특정 사용자를 위한 데이터 임시 저장할 때 유용
-// req.session 객체 안에 유지됨
 app.use(session({
     resave: false,
     saveUninitialized: false,
@@ -46,9 +53,10 @@ app.use(session({
         secure: false,
     },
     name: 'session-cookie'
-    // 배포 시에는 store에 데이터베이스를 연결해서 세션을 유지하는 것이 좋다.
-    // 보통 레디스가 자주 쓰인다.
+    // 배포 시에는 store에 데이터베이스를 연결해서 세션 유지, 레디스가 자주 쓰임
 }));
+
+
 
 
 app.use('/', indexRouter);
@@ -56,12 +64,14 @@ app.use('/class', classRouter);
 app.use('/thumbnail', thumbnailRouter);
 app.use('/comment', commentRouter);
 
-// next를 호출하지 않는 미들웨어는 res.send로 응답을 보내야 함
-app.use((req, res, next)=>{
-    res.status(404).send('Not Found');
-});
+app.use((req, res,next) => {
+    const error = new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
+    error.status = 404;
+    logger.info('hello');
+    logger.error(error.message);
+    next(error);
+})
 
-// 에러 처리 미들웨어는 매개변수가 네 개
 app.use((err, req, res, next)=>{
     console.error(err);
     res.status(500).send(err.message);

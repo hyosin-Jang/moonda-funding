@@ -4,6 +4,7 @@
     "description": "API server for moonda-funding",
     "main": "app.js",
     "scripts": {
+        "start": "cross-env NODE_ENV=production PORT=80 pm2 start app.js",
         "server": "nodemon app",
         "client": "cd .. && cd moonda-funding && npm start",
         "dev": "concurrently \"npm run server\"  \"npm run client\""
@@ -13,14 +14,18 @@
     "dependencies": {
         "cookie-parser": "^1.4.5",
         "cors": "^2.8.5",
+        "cross-env": "^7.0.3",
         "dotenv": "^10.0.0",
         "express": "^4.17.1",
         "express-session": "^1.17.2",
+        "helmet": "^4.6.0",
+        "hpp": "^0.2.3",
         "morgan": "^1.10.0",
         "mysql2": "^2.3.3",
         "nunjucks": "^3.2.3",
         "sequelize": "^6.9.0",
-        "sequelize-cli": "^6.3.0"
+        "sequelize-cli": "^6.3.0",
+        "winston": "^3.3.3"
     },
     "devDependencies": {
         "nodemon": "^2.0.15"
