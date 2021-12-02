@@ -52,7 +52,7 @@ const Detail = () => {
   );
 };
 
-export default Detail;
+export default React.memo(Detail);
 
 const Wrapper = styled.div`
   display: flex;

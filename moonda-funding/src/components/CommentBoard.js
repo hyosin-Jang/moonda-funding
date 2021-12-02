@@ -55,4 +55,4 @@ const CommentBoard = ({ comments }) => {
   );
 };
 
-export default CommentBoard;
+export default React.memo(CommentBoard);

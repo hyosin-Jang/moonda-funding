@@ -4,21 +4,21 @@ import axios from "axios";
 
 import "../style/style.scss";
 
+const getRandomNickname = () => {
+  const randomNickname = [
+    "핸드폰 충전 중인 반 고흐",
+    "솜사탕이 먹고 싶은 모네",
+    "뮤지컬이 보고 싶은 피카소",
+    "배가 고픈 안보현",
+    "기분 좋은 정국이"
+  ];
+  const randNum = Math.floor(Math.random() * randomNickname.length);
+  return randomNickname[randNum];
+};
+
 const AlarmModal = ({ handleAlarmModal, id }) => {
   const [phoneNum, setPhoneNum] = useState();
   const [comment, setComment] = useState();
-
-  const getRandomNickname = () => {
-    const randomNickname = [
-      "핸드폰 충전 중인 반 고흐",
-      "솜사탕이 먹고 싶은 모네",
-      "뮤지컬이 보고 싶은 피카소",
-      "배가 고픈 안보현",
-      "기분 좋은 정국이"
-    ];
-    const randNum = Math.floor(Math.random() * randomNickname.length);
-    return randomNickname[randNum];
-  };
 
   const handlePhoneNum = e => {
     setPhoneNum(e.target.value);
@@ -82,7 +82,7 @@ const AlarmModal = ({ handleAlarmModal, id }) => {
   );
 };
 
-export default AlarmModal;
+export default React.memo(AlarmModal);
 
 const Wrapper = styled.div`
   position:fixed;
@@ -100,6 +100,7 @@ const ModalContainer = styled.div`
   height: 80%;
   left: 10%;
   top: 25%;
+  bottom: 25%;
 `;
 
 const Modal = styled.div`
