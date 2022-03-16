@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ProgressBar from "./ProgressBar";
 import { useNavigate } from "react-router-dom";
 import Button from "./Button";
-import style from "../style/style.scss";
+import jazzImg from "../image/jazz2.jpg";
 
 function StyledCard({
   id,
@@ -14,7 +14,6 @@ function StyledCard({
   subtitle,
   state
 }) {
-  // rest 이용하기
   const [classInfo, setClassInfo] = useState([
     id,
     name,
@@ -60,6 +59,8 @@ const Thumbnail = styled.div`
   height: 70%;
   width: inherit;
   background-color: lightgrey;
+  background-image: url(${jazzImg});
+  background-size: contain;
 `;
 const Name = styled.div`
   height: 10%;
