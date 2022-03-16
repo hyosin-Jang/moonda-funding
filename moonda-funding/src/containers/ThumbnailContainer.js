@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import ClassBoard from "../components/ClassBoard";
 import axios from "axios";
 
-const ClassContainer = ({ state }) => {
-  // 한번만 실행
+const ThumbnailContainer = () => {
   const [classes, setClasses] = useState([]);
   useEffect(() => {
     getClassAPI();
@@ -11,7 +10,7 @@ const ClassContainer = ({ state }) => {
 
   const getClassAPI = () => {
     axios
-      .get(`http://localhost:5000/class/${state}`)
+      .get("http://localhost:5000/class")
       .then(res => {
         console.log(res.data);
         setClasses(res.data);
@@ -19,7 +18,7 @@ const ClassContainer = ({ state }) => {
       .catch(err => console.log(err));
   };
 
-  return <ClassBoard classes={classes} state={state} />;
+  return <ClassBoard classes={classes} />;
 };
 
-export default ClassContainer;
+export default ThumbnailContainer;

@@ -4,17 +4,6 @@ import "../style/style.scss";
 import backicon from "../image/back-icon.jpg";
 import { useNavigate } from "react-router-dom";
 
-const BackIcon = styled.img`
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-`;
-
-const Name = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-`;
 const DetailHeader = ({ name }) => {
   const navigate = useNavigate();
 
@@ -28,3 +17,15 @@ const DetailHeader = ({ name }) => {
 };
 
 export default DetailHeader;
+
+const BackIcon = styled.img`
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+`;
+
+const Name = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+`;

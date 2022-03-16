@@ -4,6 +4,19 @@ import { useNavigate } from "react-router-dom";
 import "../style/style.scss";
 import logo from "../image/logo.jpg";
 
+const Header = () => {
+  const navigate = useNavigate();
+  return (
+    <div className="header-wrapper">
+      <img className="header-logo" src={logo} onClick={() => navigate("/")} />
+      <div> </div>
+      {/*<Button>앱 출시 알림 신청</Button>*/}
+    </div>
+  );
+};
+
+export default Header;
+
 const Logo = styled.img`
   font-size: 20px;
   width: 100px;
@@ -21,16 +34,3 @@ const Button = styled.button`
   padding: 7px;
   font-size: 11px;
 `;
-
-const Header = () => {
-  const navigate = useNavigate();
-  return (
-    <div className="header-wrapper">
-      <img className="header-logo" src={logo} onClick={() => navigate("/")} />
-      <div> </div>
-      <Button>앱 출시 알림 신청</Button>
-    </div>
-  );
-};
-
-export default Header;

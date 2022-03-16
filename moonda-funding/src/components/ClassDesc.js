@@ -2,6 +2,33 @@ import React from "react";
 import styled from "styled-components";
 import "../style/style.scss";
 
+const ClassDesc = ({ name, desc, subtitle, goalCount }) => {
+  return (
+    <>
+      <Container>
+        <Name>{name}</Name>
+        <Subtitle>
+          {subtitle}
+          <br />
+          {">>"} 파트별 모집 가능
+        </Subtitle>
+        <div className="goal-desc">
+          {" "}
+          목표 응원 <span className="red">{goalCount}명</span> 달성 시 클래스
+          개설!
+        </div>
+      </Container>
+      <Wrapper>
+        <Bold>클래스 소개</Bold>
+        <br />
+        <div className="class-desc">{desc}</div>
+      </Wrapper>
+    </>
+  );
+};
+
+export default ClassDesc;
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -36,30 +63,3 @@ const Subtitle = styled.div`
   padding-top: 10px;
   padding-bottom: 5px;
 `;
-
-const ClassDesc = ({ name, desc, subtitle, goalCount }) => {
-  return (
-    <>
-      <Container>
-        <Name>{name}</Name>
-        <Subtitle>
-          {subtitle}
-          <br />
-          {">>"} 파트별 모집 가능
-        </Subtitle>
-        <div className="goal-desc">
-          {" "}
-          목표 응원 <span className="red">{goalCount}명</span> 달성 시 클래스
-          개설!
-        </div>
-      </Container>
-      <Wrapper>
-        <Bold>클래스 소개</Bold>
-        <br />
-        <div className="class-desc">{desc}</div>
-      </Wrapper>
-    </>
-  );
-};
-
-export default ClassDesc;
