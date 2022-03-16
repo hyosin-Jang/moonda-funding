@@ -9,7 +9,6 @@ const ClassContainer = ({ state }) => {
     getClassAPI();
   }, []);
 
-  // TODO: OpendedClass에서 호출 시, 개설된 클래스 api 호출하기
   const getClassAPI = () => {
     axios
       .get(`http://localhost:5000/class/${state}`)

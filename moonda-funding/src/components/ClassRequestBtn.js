@@ -1,24 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 import Icon from "../image/icon.jpg";
 import styles from "../style/requestButton.scss";
 import classNames from "classnames/bind";
-
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 95%;
-  margin: 20px;
-`;
-
-const Message = styled.div`
-  color: grey;
-  font-size: 13px;
-`;
-
-const Img = styled.img`
-  width: 100px;
-`;
 
 const ClassRequestBtn = () => {
   const cx = classNames.bind(styles);
@@ -36,3 +20,19 @@ const ClassRequestBtn = () => {
 };
 
 export default ClassRequestBtn;
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 95%;
+  margin: 20px;
+`;
+
+const Message = styled.div`
+  color: grey;
+  font-size: 13px;
+`;
+
+const Img = styled.img`
+  width: 100px;
+`;
