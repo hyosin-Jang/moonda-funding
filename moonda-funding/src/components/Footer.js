@@ -1,5 +1,23 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
+
+const Footer = () => {
+  return (
+    <Wrapper>
+      <Button>
+        <Message>상위 1% 튜터의 음악 & 미술 클래스! </Message>앱 출시 알림
+        신청받기
+      </Button>
+      <Contact>
+        Contact <br />
+        jhshin.moonda@gmail.com <br />
+        jsyang.moonda@gmail.com
+      </Contact>
+    </Wrapper>
+  );
+};
+
+export default Footer;
 
 const Wrapper = styled.div`
   bottom: 0;
@@ -42,21 +60,3 @@ const Message = styled.div`
   font-size: 12px;
   color: grey;
 `;
-
-const Footer = () => {
-  return (
-    <Wrapper>
-      <Button>
-        <Message>상위 1% 튜터의 음악 & 미술 클래스! </Message>앱 출시 알림
-        신청받기
-      </Button>
-      <Contact>
-        Contact <br />
-        jhshin.moonda@gmail.com <br />
-        jsyang.moonda@gmail.com
-      </Contact>
-    </Wrapper>
-  );
-};
-
-export default Footer;

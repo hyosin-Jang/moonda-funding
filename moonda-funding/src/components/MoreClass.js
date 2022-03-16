@@ -2,17 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames/bind";
-
 import styles from "../style/style.scss";
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin: 7px;
-  padding: 13px;
-  cursor: pointer;
-`;
 
 const MoreClass = ({ mainClassDesc }) => {
   const { mainMessage, subMessage, path } = mainClassDesc;
@@ -36,3 +26,12 @@ const MoreClass = ({ mainClassDesc }) => {
 };
 
 export default MoreClass;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 7px;
+  padding: 13px;
+  cursor: pointer;
+`;

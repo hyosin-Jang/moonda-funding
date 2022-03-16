@@ -1,22 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 import "../style/style.scss";
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-bottom: 5px;
-  padding-top: 3px;
-  margin-left: 0.1rem;
-  margin-right: 0.1rem;
-`;
-
-const AchieveRate = styled.div`
-  color: red;
-  font-weight: bold;
-  padding-bottom: 5px;
-`;
 
 const ProgressBar = ({ cheerCount, goalCount }) => {
   let achieveRate = Math.floor((cheerCount / goalCount) * 100);
@@ -41,3 +25,19 @@ const ProgressBar = ({ cheerCount, goalCount }) => {
 };
 
 export default ProgressBar;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 5px;
+  padding-top: 3px;
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+`;
+
+const AchieveRate = styled.div`
+  color: red;
+  font-weight: bold;
+  padding-bottom: 5px;
+`;
