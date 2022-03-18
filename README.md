@@ -7,16 +7,3 @@
 ## live demo
 ![문다_실행화면](https://user-images.githubusercontent.com/71035113/158672729-787ef7a9-81c6-4994-908d-8f6faf31f44a.gif)
 
-## 사용 기술
-
-### FE
-- 모바일 우선 웹페이지로 구현
-- 태블릿 사이즈까지 반응형 대응
-
-### BE
-- sequelize orm
-- MySQL
-- api..
-
-### How to get started
-
